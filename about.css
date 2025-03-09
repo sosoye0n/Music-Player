@@ -1,0 +1,65 @@
+@font-face {
+  font-family: "jumper";
+  src: url("./font/JumperPERSONALUSEONLY-Black.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  padding: 0 3%;
+  font-size: 1.6rem;
+  background: #E6E8EA;
+  color: #fc3636;
+  font-family: "jumper";
+}
+
+header {
+  width: 100%;
+  height: 140px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 2rem;
+}
+header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+header nav ul li a:hover {
+  line-height: 8px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.ifno {
+  font-size: 2.4rem;
+  font-weight: bold;
+}

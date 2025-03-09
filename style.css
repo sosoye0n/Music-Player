@@ -1,0 +1,391 @@
+@font-face {
+  font-family: "jumper";
+  src: url("./font/JumperPERSONALUSEONLY-Black.ttf") format("truetype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  font-size: 1.6rem;
+  background: #E6E8EA;
+  color: #fc3636;
+  font-family: "jumper";
+}
+
+header {
+  padding: 0 3%;
+  width: 100%;
+  height: 140px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 2rem;
+}
+header nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+header nav ul li a:hover {
+  line-height: 8px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+header .header-social {
+  font-size: 3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+
+.jukebox {
+  width: 100%;
+  padding: 0 3%;
+  height: 100%;
+  margin: 50px 0;
+  position: relative;
+}
+.jukebox .jukebox-wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.jukebox .jukebox-wrapper .card {
+  width: 100%;
+  height: 100%;
+  margin-left: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  -webkit-box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.jukebox .jukebox-wrapper .card:first-child {
+  margin-left: 0;
+}
+.jukebox .jukebox-wrapper .card.active {
+  border-radius: 50%;
+  -webkit-animation: ani 8s linear infinite;
+          animation: ani 8s linear infinite;
+}
+.jukebox .jukebox-wrapper .card .card-cover {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.jukebox .jukebox-wrapper .card .card-cover .card-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.jukebox .jukebox-buttons {
+  width: 100%;
+  height: 100%;
+  padding: 0 3%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.jukebox .jukebox-buttons .btnPrev {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  text-align: left;
+  left: 30%;
+  -webkit-transform: translate(-20vw, -50%);
+          transform: translate(-20vw, -50%);
+  cursor: pointer;
+}
+.jukebox .jukebox-buttons .btnPrev:hover span {
+  opacity: 0;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+}
+.jukebox .jukebox-buttons .btnPrev:hover::before {
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+}
+.jukebox .jukebox-buttons .btnPrev:hover::after {
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+.jukebox .jukebox-buttons .btnPrev span {
+  color: #fc3636;
+  font: normal 2rem/1;
+  opacity: 1;
+  -webkit-transform: translateX(30%);
+          transform: translateX(30%);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.jukebox .jukebox-buttons .btnPrev::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #fc3636;
+  position: absolute;
+  left: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  top: 50%;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
+}
+.jukebox .jukebox-buttons .btnPrev::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #fc3636;
+  position: absolute;
+  left: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  bottom: 50%;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transform-origin: left center;
+          transform-origin: left center;
+}
+.jukebox .jukebox-buttons .btnNext {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  text-align: right;
+  right: 30%;
+  -webkit-transform: translate(20vw, -50%);
+          transform: translate(20vw, -50%);
+}
+.jukebox .jukebox-buttons .btnNext:hover span {
+  opacity: 0;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+}
+.jukebox .jukebox-buttons .btnNext:hover::before {
+  -webkit-transform: rotate(30deg);
+          transform: rotate(30deg);
+}
+.jukebox .jukebox-buttons .btnNext:hover::after {
+  -webkit-transform: rotate(-30deg);
+          transform: rotate(-30deg);
+}
+.jukebox .jukebox-buttons .btnNext span {
+  display: inline-block;
+  color: #fc3636;
+  font: normal 2rem/1;
+  opacity: 1;
+  -webkit-transform: translateX(-30%);
+          transform: translateX(-30%);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.jukebox .jukebox-buttons .btnNext::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #fc3636;
+  position: absolute;
+  left: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  top: 50%;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transform-origin: right center;
+          transform-origin: right center;
+}
+.jukebox .jukebox-buttons .btnNext::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #fc3636;
+  position: absolute;
+  left: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  top: 50%;
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  -webkit-transform-origin: right center;
+          transform-origin: right center;
+}
+
+.player {
+  padding: 0 3%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #202020;
+}
+.player .playerTop {
+  border: 1px solid #0f0;
+  height: 180px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.player .playerBottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.player .playerBottom .music-info {
+  width: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.player .playerBottom .music-info .song-name {
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+.player .playerBottom .music-info .artist-name {
+  font-size: 2rem;
+  margin-top: 16px;
+}
+.player .playerBottom .control-buttons {
+  width: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 40px;
+}
+.player .playerBottom .control-buttons button {
+  background-color: transparent;
+  border: none;
+  color: #202020;
+  font-size: 4rem;
+  cursor: pointer;
+}
+.player .playerBottom .volume {
+  width: 33%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+.player .playerBottom .volume .volume-display {
+  gap: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+.player .playerBottom .volume .volume-display .volume-control input {
+  cursor: pointer;
+  width: 100px;
+  border-radius: 8px;
+  -webkit-appearance: none;
+  background: #fc3636;
+  accent-color: #E6E8EA;
+}
+
+@-webkit-keyframes ani {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes ani {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,282 @@
+// font
+@font-face {
+  font-family: "jumper";
+  src: url("./font/JumperPERSONALUSEONLY-Black.ttf") format("truetype");
+} // jumper
+
+// reset & variable
+@import "./styles/reset.scss";
+@import "./styles/variable.scss";
+
+// mixin
+@mixin btnStyle {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 50%;
+  display: flex;
+  // justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+@mixin btnDetail {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: map-get($map: $color, $key: red);
+  position: absolute;
+  left: 0;
+  transition: all 0.5s;
+}
+
+// common
+html {
+  font-size: 62.5%;
+}
+
+// contents
+body {
+  width: 100%;
+  height: 100vh;
+  // padding: 0 3%;
+  font-size: 1.6rem;
+  background: map-get($map: $color, $key: bg);
+  color: map-get($map: $color, $key: red);
+  font-family: "jumper";
+}
+
+header {
+  padding: 0 3%;
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 2rem;
+  nav {
+    ul {
+      display: flex;
+      gap: 20px;
+      li {
+        a {
+          &:hover {
+            line-height: 8px;
+            font-weight: bold;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .header-social {
+    font-size: 3rem;
+    display: flex;
+    gap: 20px;
+  }
+}
+
+.jukebox {
+  width: 100%;
+  padding: 0 3%;
+  height: 100%;
+  margin: 50px 0;
+  position: relative;
+  // overflow: hidden;
+  .jukebox-wrapper {
+    width: 100%;
+    // height: auto;
+    // height: 320px;
+    display: flex;
+    align-items: center;
+    .card {
+      width: 100%;
+      height: 100%;
+      margin-left: 40px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 10px 10px 20px rgba($color: #000000, $alpha: 0.1);
+      transition: all 0.5s;
+      &:first-child {
+        margin-left: 0;
+      }
+      &.active {
+        border-radius: 50%;
+        animation: ani 8s linear infinite;
+      }
+      .card-cover {
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        .card-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: all 0.5s;
+        }
+      }
+    }
+  }
+  .jukebox-buttons {
+    width: 100%;
+    height: 100%;
+    padding: 0 3%;
+    display: flex;
+    justify-content: space-between;
+    .btnPrev {
+      @include btnStyle;
+      text-align: left;
+      left: 30%;
+      transform: translate(-20vw, -50%);
+      cursor: pointer;
+      &:hover {
+        span {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        &::before {
+          transform: rotate(-30deg);
+        }
+        &::after {
+          transform: rotate(30deg);
+        }
+      }
+      span {
+        color: map-get($map: $color, $key: red);
+        font: normal 2rem/1;
+        opacity: 1;
+        transform: translateX(30%);
+        transition: all 0.5s;
+      }
+      &::before {
+        @include btnDetail;
+        top: 50%;
+        transform: rotate(-180deg);
+        transform-origin: left center;
+      }
+      &::after {
+        @include btnDetail;
+        bottom: 50%;
+        transform: rotate(180deg);
+        transform-origin: left center;
+      }
+    }
+    .btnNext {
+      @include btnStyle;
+      text-align: right;
+      right: 30%;
+      transform: translate(20vw, -50%);
+      &:hover {
+        span {
+          opacity: 0;
+          transform: translateX(-100%);
+        }
+        &::before {
+          transform: rotate(30deg);
+        }
+        &::after {
+          transform: rotate(-30deg);
+        }
+      }
+      span {
+        display: inline-block;
+        color: map-get($map: $color, $key: red);
+        font: normal 2rem/1;
+        opacity: 1;
+        transform: translateX(-30%);
+        transition: all 0.5s;
+      }
+      &::before {
+        @include btnDetail;
+        top: 50%;
+        transform: rotate(180deg);
+        transform-origin: right center;
+      }
+      &::after {
+        @include btnDetail;
+        top: 50%;
+        transform: rotate(-180deg);
+        transform-origin: right center;
+      }
+    }
+  }
+}
+
+.player {
+  padding: 0 3%;
+  display: flex;
+  flex-direction: column;
+  color: map-get($map: $color, $key: dark);
+  .playerTop {
+    border: 1px solid #0f0;
+    height: 180px;
+    display: flex;
+    align-items: center;
+  }
+  .playerBottom {
+    display: flex;
+    justify-content: space-between;
+    .music-info {
+      width: 33%;
+      display: flex;
+      justify-content: start;
+      flex-direction: column;
+      .song-name {
+        font-size: 2.4rem;
+        font-weight: bold;
+      }
+      .artist-name {
+        font-size: 2rem;
+        margin-top: 16px;
+      }
+    }
+    .control-buttons {
+      // display: none;
+      width: 33%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      button {
+        background-color: transparent;
+        border: none;
+        color: map-get($map: $color, $key: dark);
+        font-size: 4rem;
+        cursor: pointer;
+      }
+    }
+    .volume {
+      width: 33%;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      gap: 20px;
+      .volume-display {
+        gap: 20px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        .volume-control {
+          input {
+            cursor: pointer;
+            width: 100px;
+            border-radius: 8px;
+            -webkit-appearance: none;
+            background: map-get($map: $color, $key: red);
+            accent-color: map-get($map: $color, $key: bg);
+          }
+        }
+      }
+    }
+  }
+}
+
+// animation
+@keyframes ani {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
